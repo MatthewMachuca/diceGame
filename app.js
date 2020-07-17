@@ -1,19 +1,22 @@
 function runGame() {
+	let winner = document.querySelector('h1');
 	let result1 = Math.floor(Math.random() * 6 + 1);
 	let result2 = Math.floor(Math.random() * 6 + 1);
-	console.log(result1, result2);
+
 	if (result1 > result2) {
-		console.log('Player 1 wins!');
+		winner.innerHTML = 'Player 1 Wins!';
 	} else if (result2 > result1) {
-		console.log('Player 2 wins!');
+		winner.innerHTML = 'Player 2 Wins!';
 	} else {
-		console.log("It's a tie! ");
+		winner.innerHTML = "It's a Tie!";
 	}
 	const diceImgs = [ 'dice1.png', 'dice2.png', 'dice3.png', 'dice4.png', 'dice5.png', 'dice6.png' ];
+
 	let player1DiceImage = diceImgs[result1 - 1];
-	console.log(player1DiceImage);
+	let player2DiceImage = diceImgs[result2 - 1];
+
+	document.getElementById('player1').src = player1DiceImage;
+	document.getElementById('player2').src = player2DiceImage;
 }
 
-document.addEventListener('keypress', runGame);
-
-document.getElementById('player2').src = 'dice1.png';
+document.getElementById('start').addEventListener('click', runGame);
